@@ -11,59 +11,63 @@ body {
 }
 
 .container {
-    display: grid;
-    grid-template-areas:
-        "b-box  g-box"
-        "r-box  y-box";
-    gap: 50px;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    animation: rotateContainer 10s infinite linear;
 }
 
 .box {
-    width: 120px;
-    height: 100px;
-    transition: transform 0.3s ease;
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    transition: all 0.3s ease;
+    animation: rotateSelf 2s infinite linear;
 }
 
 .blue {
-    grid-area: b-box;
+    top: 0;
+    left: 0;
     background-color: blue;
 }
 
 .green {
-    grid-area: g-box;
+    top: 0;
+    right: 0;
     background-color: green;
 }
 
 .red {
-    grid-area: r-box;
+    bottom: 0;
+    left: 0;
     background-color: red;
 }
 
 .yellow {
-    grid-area: y-box;
+    bottom: 0;
+    right: 0;
     background-color: yellow;
 }
 
 .box:hover {
-    transform: scale(1.2) rotate(2deg);
     cursor: pointer;
+    transform: scale(1.3)
 }
 
-.box {
-    animation: pulse 2s infinite linear;
-  
+@keyframes rotateContainer {
+    from {
+         transform: rotate(0deg);
+         }
+    to {
+         transform: rotate(360deg); 
+        }
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+@keyframes rotateSelf {
+    from {
+         transform: rotate(0deg); 
+        }
+    to {
+         transform: rotate(360deg); 
+        }
 }
